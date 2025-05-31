@@ -247,7 +247,9 @@ elif menu == "Exploración con PyGWalker":
         if uploaded_file is not None:
             try:
                 json_content = uploaded_file.read().decode("utf-8")
-                components.html(json_content, height=800, scrolling=True)
+                generated_html_json = pyg.to_html(df_filtrado, return_html=True, dark='dark', spec =  json_content)
+                st.subheader("⚙️ Carga gráfica a PyGWalker dede json")
+                components.html(generated_html_json, height=800, scrolling=True)
             except Exception as e:
                 st.error(f"Error al cargar el archivo: {e}")
 
